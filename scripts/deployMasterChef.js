@@ -33,6 +33,7 @@ async function main() {
   const mc = await deployMasterchef(cob.address, addresses.timelock, addresses.devTreasury, cobPerBlock, startblock);
 
   await cob.transferOwnership(mc.address);
+  await mc.transferOwnership(addresses.timelock);
 
   console.log("Transferred ownership of Cob to MasterChief for minting & staking rewards")
 }
