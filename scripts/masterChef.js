@@ -58,7 +58,7 @@ async function createPool(schedule, allocPoint, poolToken, depositFeeBP, withUpd
   const signer = await fetchSigner();
   const masterchef = await fetchContract(addresses.masterChef, MasterChef.abi, signer);
 
-  console.log(`loaded MasterChef ${masterchefContract.address}
+  console.log(`loaded MasterChef ${masterchef.address}
               Adding Pool for ${poolToken} 
   `);
 
@@ -83,7 +83,7 @@ async function setPool(schedule, poolId, allocPoint, depositFeeBP, withUpdate, d
   const signer = await fetchSigner();
   const masterchef = await fetchContract(addresses.masterChef, MasterChef.abi, signer);
 
-  console.log(`loaded MasterChef ${masterchefContract.address}
+  console.log(`loaded MasterChef ${masterchef.address}
               Setting pool:${poolId} 
   `);
 
@@ -94,12 +94,14 @@ async function setPool(schedule, poolId, allocPoint, depositFeeBP, withUpdate, d
     withUpdate
   );
 
-  if(schedule) {
-    await scheduleTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero, delay);
-  }
-  else {
-    await executeTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero);
-  }
+  console.log(rawTx);
+
+  // if(schedule) {
+  //   await scheduleTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero, delay);
+  // }
+  // else {
+  //   await executeTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero);
+  // }
 }
 
 // ----------------------------------------------------------------------------------
@@ -108,18 +110,20 @@ async function transferOwnership(schedule, newOwner, delay) {
   const signer = await fetchSigner();
   const masterchef = await fetchContract(addresses.masterChef, MasterChef.abi, signer);
 
-  console.log(`loaded MasterChef ${masterchefContract.address}
+  console.log(`loaded MasterChef ${masterchef.address}
               Transferring ownership to ${newOwner} 
   `);
 
   const rawTx = await masterchef.populateTransaction.transferOwnership(newOwner);
 
-  if(schedule) {
-    await scheduleTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero, delay);
-  }
-  else {
-    await executeTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero);
-  }
+  console.log(rawTx);
+
+  // if(schedule) {
+  //   await scheduleTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero, delay);
+  // }
+  // else {
+  //   await executeTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero);
+  // }
 }
 
 // ----------------------------------------------------------------------------------
@@ -128,7 +132,7 @@ async function updateEmissionRate(schedule, cobPerBlock, delay) {
   const signer = await fetchSigner();
   const masterchef = await fetchContract(addresses.masterChef, MasterChef.abi, signer);
 
-  console.log(`loaded MasterChef ${masterchefContract.address}
+  console.log(`loaded MasterChef ${masterchef.address}
               Updating emission rate to ${cobPerBlock} 
   `);
 
@@ -145,7 +149,10 @@ async function updateEmissionRate(schedule, cobPerBlock, delay) {
 // ----------------------------------------------------------------------------------
 
 async function main() {
+  const signer = await fetchSigner();
   // **** Examples ****
+  await transferOwnership(true, signer.address, 30);
+  await setPool(true, 1, 100, 0, false, 30);
 }
 
 // ----------------------------------------------------------------------------------
