@@ -5,7 +5,7 @@
 // Runtime Environment's members available in the global scope.
 const { BigNumber } = require("ethers");
 const hre = require("hardhat");
-const { addresses } = require("../addresses");
+const { addresses } = require("./addresses");
 const ethers = hre.ethers;
 
 const provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL);

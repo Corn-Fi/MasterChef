@@ -51,7 +51,7 @@ async function executeTransaction(target, value, data, predecessor, salt) {
 }
 
 // ----------------------------------------------------------------------------------
-// ------------------------------ MasterChef Functions ------------------------------
+// ------------------------- MasterChef Timelock Functions --------------------------
 // ----------------------------------------------------------------------------------
 
 async function createPool(schedule, allocPoint, poolToken, depositFeeBP, withUpdate, delay) {
@@ -96,12 +96,12 @@ async function setPool(schedule, poolId, allocPoint, depositFeeBP, withUpdate, d
 
   console.log(rawTx);
 
-  // if(schedule) {
-  //   await scheduleTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero, delay);
-  // }
-  // else {
-  //   await executeTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero);
-  // }
+  if(schedule) {
+    await scheduleTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero, delay);
+  }
+  else {
+    await executeTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero);
+  }
 }
 
 // ----------------------------------------------------------------------------------
@@ -118,12 +118,12 @@ async function transferOwnership(schedule, newOwner, delay) {
 
   console.log(rawTx);
 
-  // if(schedule) {
-  //   await scheduleTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero, delay);
-  // }
-  // else {
-  //   await executeTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero);
-  // }
+  if(schedule) {
+    await scheduleTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero, delay);
+  }
+  else {
+    await executeTransaction(masterchef.address, zero, rawTx.data, hashZero, hashZero);
+  }
 }
 
 // ----------------------------------------------------------------------------------
@@ -151,8 +151,8 @@ async function updateEmissionRate(schedule, cobPerBlock, delay) {
 async function main() {
   const signer = await fetchSigner();
   // **** Examples ****
-  await transferOwnership(true, signer.address, 30);
-  await setPool(true, 1, 100, 0, false, 30);
+  // await transferOwnership(true, signer.address, 30);
+  await createPool(true, 100, addresses.tokens.USDC, 10, true, 120);
 }
 
 // ----------------------------------------------------------------------------------
