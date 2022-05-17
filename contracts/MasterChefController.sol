@@ -26,9 +26,20 @@ import "./MasterChefV2.sol";
 /**
 * @title Corn Finance Master Chef Controller
 * @author C.W.B.
-* @dev  1.) Deploy this contract
-*       2.) Transfer ownership of MasterChef to this contract
-*       3.) Transfer ownership of this contract to the timelock
+* @dev Due to the original MasterChef contract not restricting deposit fee nor 
+* emission rate, this contract is used to place a max deposit fee on all new and 
+* old pools as well as limiting the emission rate when updating.
+*
+* Depoloy instructions:
+* 1.) Deploy this contract
+* 2.) Transfer ownership of this contract to the timelock
+* 3.) Transfer ownership of MasterChef to this contract
+* @notice This contract must be the owner of the MasterChef contract. MasterChef 
+* ownership cannot be transferred again after setting this contract as owner.
+*
+*   !!! Owner of this contract will have control of adding new pools, !!!
+*   !!! setting allocation points and deposit fee of existing pools,  !!!
+*   !!! and updating emission rate.                                   !!!
 */
 contract MasterChefController is Ownable {
     using SafeERC20 for IERC20;

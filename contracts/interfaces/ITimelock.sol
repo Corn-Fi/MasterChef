@@ -15,10 +15,7 @@
 //     '.-=-=-=-=-=-=-.' \/ \
 //       `-=.=-.-=.=-'    \ /\
 //          ^  ^  ^       _H_ \
-//
-// ----- Corn Finance is a midwest grown decentralized finance protocol with the aim of making life easier -----
-// ---------------------------------- We need a bigger ship where we're going ----------------------------------
-// ---------------------------------------------------- C F ----------------------------------------------------
+
 
 pragma solidity ^0.8.0;
 
