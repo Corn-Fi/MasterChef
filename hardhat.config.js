@@ -24,7 +24,8 @@ module.exports = {
     maticMainnet: {
       url: process.env.RPC_URL,
       accounts: [process.env.PRIVATE_KEY],
-      gasPrice: 110000000000
+      // maxFeePerGas: auto, 
+      // maxPriotiyFeePerGas: auto
     },
   },
   etherscan: {

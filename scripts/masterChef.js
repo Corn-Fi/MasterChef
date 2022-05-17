@@ -152,7 +152,7 @@ async function main() {
   const signer = await fetchSigner();
   // **** Examples ****
   // await transferOwnership(true, signer.address, 30);
-  await createPool(true, 100, addresses.tokens.USDC, 10, true, 120);
+  await createPool(false, 100, addresses.tokens.USDC, 10, true, 120);
 }
 
 // ----------------------------------------------------------------------------------

@@ -3,7 +3,8 @@ const addresses = {
     cobToken: "0x57a108d850033b791eaf3f18376835e264a93d51",
     devTreasury: "0x93F835b9a2eec7D2E289c1E0D50Ad4dEd88b253f",
     cornTreasury: "0xfC484aFB55D9EA9E186D8De55A0Aa24cbe772a19",
-    timelock: "0xCf781b2FBB2d92B027837A273482CCaDd880B9A2",
+    timelock: "0x4C7d41cF74BE3994e4BcEb7F7810cd85CB67c973",
+    gasTank: "0x33D6f300D3C4Fc5976bE77D962Ac2a64201f5832",
     tokens: {
         USDC: "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
         WETH: "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",

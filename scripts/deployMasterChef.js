@@ -25,17 +25,25 @@ async function deployMasterchef(cobAddress, devAddress, feeAddress, cobPerBlock,
   return await masterChef.deployed();
 }
 
+async function deployMasterchefController() {
+  const MasterChefController = await ethers.getContractFactory("MasterChefController");
+  const masterChefController = await MasterChefController.deploy();
+  return await masterChefController.deployed();
+}
+
 async function main() {
-  const cobPerBlock = ethers.utils.parseUnits("2.24", "ether");
-  const startblock = BigNumber.from(27745197);
+  // const cobPerBlock = ethers.utils.parseUnits("2.24", "ether");
+  // const startblock = BigNumber.from(27745197);
 
-  const cob = await deployToken(addresses.devTreasury);
-  const mc = await deployMasterchef(cob.address, addresses.timelock, addresses.devTreasury, cobPerBlock, startblock);
+  // const cob = await deployToken(addresses.devTreasury);
+  // const mc = await deployMasterchef(cob.address, addresses.timelock, addresses.devTreasury, cobPerBlock, startblock);
 
-  await cob.transferOwnership(mc.address);
-  await mc.transferOwnership(addresses.timelock);
+  // await cob.transferOwnership(mc.address);
+  // await mc.transferOwnership(addresses.timelock);
 
-  console.log("Transferred ownership of Cob to MasterChief for minting & staking rewards")
+  // console.log("Transferred ownership of Cob to MasterChief for minting & staking rewards")
+
+  await deployMasterchefController();
 }
 
 // We recommend this pattern to be able to use async/await everywhere
