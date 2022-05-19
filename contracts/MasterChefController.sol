@@ -31,9 +31,9 @@ import "./MasterChefV2.sol";
 * old pools as well as limiting the emission rate when updating.
 *
 * Depoloy instructions:
-* 1.) Deploy this contract
-* 2.) Transfer ownership of this contract to the timelock
-* 3.) Transfer ownership of MasterChef to this contract
+*   1.) Deploy this contract
+*   2.) Transfer ownership of this contract to the timelock
+*   3.) Transfer ownership of MasterChef to this contract
 * @notice This contract must be the owner of the MasterChef contract. MasterChef 
 * ownership cannot be transferred again after setting this contract as owner.
 *

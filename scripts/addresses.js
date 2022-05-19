@@ -1,6 +1,6 @@
 const addresses = {
-    masterChef: "0x54476ce449f4d50d199a0e7683febd147c27147b",
-    cobToken: "0x57a108d850033b791eaf3f18376835e264a93d51",
+    masterChef: "0xb4B14Aa0dfa22Cb3549de81E2657c6c026014090",
+    cobToken: "0x648FA1E7Dd2722Ba93EC4Da99f2C32347522a37C",
     devTreasury: "0x93F835b9a2eec7D2E289c1E0D50Ad4dEd88b253f",
     cornTreasury: "0xfC484aFB55D9EA9E186D8De55A0Aa24cbe772a19",
     timelock: "0x4C7d41cF74BE3994e4BcEb7F7810cd85CB67c973",

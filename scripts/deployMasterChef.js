@@ -31,6 +31,14 @@ async function deployMasterchefController() {
   return await masterChefController.deployed();
 }
 
+async function polygonScanVerify(contractAddress, args, contractPath) {
+  await hre.run("verify:verify", {
+    address: contractAddress,
+    constructorArguments: args,
+    contract: contractPath
+  });
+}
+
 async function main() {
   // const cobPerBlock = ethers.utils.parseUnits("2.24", "ether");
   // const startblock = BigNumber.from(27745197);
@@ -43,7 +51,8 @@ async function main() {
 
   // console.log("Transferred ownership of Cob to MasterChief for minting & staking rewards")
 
-  await deployMasterchefController();
+  // await deployMasterchefController();
+  await polygonScanVerify("0x81a6967f5697039a81dc39de830841c44a645b4f", [], "contracts/MasterChefController.sol:MasterChefController");
 }
 
 // We recommend this pattern to be able to use async/await everywhere
